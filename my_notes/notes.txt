@@ -1,0 +1,52 @@
+python to html gui : https://pypi.org/project/remi/
+
+Console line:
+https://www.youtube.com/watch?v=vm9tOamPkeQ
+
+tkinter::
+ - not an module
+for new pc: sudo apt-get install python3-tk
+works with import after install
+
+beginner tutorial tk : https://www.youtube.com/watch?v=ibf5cx221hk
+
+tutorialpoint python tk
+
+animation tk: https://www.youtube.com/watch?v=vVRrOi5LGSo
+animated widgets with after and layout , condfigure methods
+
+window.bind('<Escape>', lambda event: window.quit())
+
+window.after(1000, func)
+-> def func(){
+  window.after(1000, func)
+}
+
+frame.pack_propagate(false)
+ - to not have frame size be affected by child size
+
+frame.pack(side = 'left')
+- default is top
+
+canvas
+https://www.youtube.com/watch?v=mop6g-c5HEY
+2:22:00
+
+treeview
+https://www.youtube.com/watch?v=mop6g-c5HEY
+2:35:00
+
+slider (progress file) #for stopwatch visual ?
+https://www.youtube.com/watch?v=mop6g-c5HEY
+2:50:00
+
+tabs (ttk.Notebook) - to add the data viewer
+https://www.youtube.com/watch?v=mop6g-c5HEY
+3:21:00
+
+tk.menu - ? for select tag
+. always nesting lot of them
+like file in the top bar is is tk.menu in tk.menu
+- window.condfigure(menu = menu) // creates the topbar
+https://www.youtube.com/watch?v=mop6g-c5HEY
+3:30:00

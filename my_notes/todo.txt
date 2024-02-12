@@ -1,0 +1,84 @@
+
+1. tkinter setup -- DONE
+<!-- - download module -->
+<!-- #create seperate window file -->
+<!-- - connect to main -->
+
+2. basic button event -- DONE
+<!-- #create a window -->
+<!-- #create a button -->
+<!-- #create button effect -->
+
+3. timer
+<!-- #date time -->
+<!-- #timer functionality
+#timer from button -->
+<!-- #save time (to array?) -->
+<!-- #app state -->
+<!-- #functionality based on state -->
+<!-- # resetting timer (start_time needs appstate.STOPPED) -->
+
+
+4. timer visuals -- DONE
+<!-- #returb total_seconds
+#intVar or vars as hours, min, seconds from total seconds -->
+
+<!-- #set up ticking animation -->
+# -- optional analog clock --
+
+5. better visuals
+<!-- #design visuals -->
+<!-- #migrigate to ctk -->
+<!-- #button frame class -->
+<!-- #change title , remove label for timer -->
+#timer numbers styling (unigue font in python applications)
+<!-- #segmented button instead of 3 buttons -->
+# -- optional shapes for button --
+#settings.py file:
+  <!-- - font -->
+  <!-- - size -->
+  - color
+  - window size
+
+6. task choice visuals
+<!-- #new window after stop -->
+<!-- # html selector type of widget -->
+#styling
+
+7. task choice functionality --  DONE
+<!-- #ability to add new options to selector -->
+<!-- #optionmenu.configure(values=["new value 1", "new value 2"]) -->
+
+8. data collection
+<!-- # get method for timemanager, and use countgui self.buttons to get timemager for savedatawindow -->
+<!-- # getting right values out fo timemanager class -->
+<!-- # tasklist update from file -->
+<!-- # timestamp to datesting -->
+#tags
+
+9. data to DATABASE
+<!-- # sqlite import nd setup -->
+<!-- #check for if database and tables exist -> create if not -->
+#tags table and insert function
+
+10. App functionality improvements
+<!-- # state setter and getter -->
+# esc as stop button event, esc esc as quick close
+<!-- # reset gui and timer -->
+# label for savedatawindow "choose category"
+
+11. data viewer window
+<!-- #tasklist with diffrent default -->
+<!-- #date choice (tkcalendar) -->
+#checkbox on date start or/and end
+#get_date, tkcalendar
+#text output
+#output types (minutes, h min , seconds)
+
+12. data as plot
+
+13. console interface
+# pip install click
+14. testing
+<!-- #CounterGui starting with AppStates.STARTED -->
+<!-- #tasklist methods -->

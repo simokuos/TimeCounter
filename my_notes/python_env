@@ -1,0 +1,24 @@
+install virtualenv, if diffenrent python version is needed
+
+python -m venv /path/to/environment
+
+venv activation:
+source /path/to/environment/bin/activate
+
+venv deactivation:
+deactivate
+
+deleting envinroment:
+rm -rf project_env/
+
+export:
+pip freeze > requirements.txt
+
+import:
+! make venv first
+pip install -r requirements.txt
+
+
+!!! for git:
+-  add env file to gitignore
+-  add requirement.txt to git
