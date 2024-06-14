@@ -1,7 +1,6 @@
-# TimerCounter (unfinished)
+# TimeCounter (unfinished)
 
-small python ctk (customtkinter) gui application for a keeping track of worktime.
-It saves this information to sqlite database, that can be found in database folder after running the application.
+small python ctk (customtkinter) gui application for a keeping track of worktime, which can be saved to sqlite database, that can be found in database folder after running the application.
 
 ## TODO
 
