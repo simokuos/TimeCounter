@@ -44,7 +44,7 @@ class timemanager:
         return minutes
 
     def secondsToTimeString(self, t):
-        if(t > 60):
+        if(t >= 60):
             hours = t // 3600
             minutes =( t%3600) //60
             text = "{0}h {1}min"
