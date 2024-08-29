@@ -1,9 +1,9 @@
 #python modules
 import customtkinter as ctk
 #application modules
-from gui.components import timervisual
+from gui.components import timervisual, tasklist
 from timemanagement.timemanager import timemanager
-from .tasklist import tasklist
+# from .tasklist import tasklist
 from database.datacontrol import datacontrol
 from gui.contants.state_enum import AppStates
 from gui.contants.settings import *
@@ -15,7 +15,6 @@ class CountGUI(ctk.CTk):
         self.title("Timer")
         #attributes
         self.status = status
-        self.first = True
         #widgets
         self.timer = timervisual(self)
         self.buttons = buttongrid(self)
@@ -33,10 +32,20 @@ class CountGUI(ctk.CTk):
         self.status = status
 
     def openSaveDataWindow(self):
-        if self.savedata_window is None or not self.savedata_window.winfo_exists():
+        if self.savedata_window is None:
+            self.timer.pack_forget()
+            self.buttons.pack_forget()
             self.savedata_window = SaveDataWindow(self, self.buttons.timelist)
         else:
-            self.savedata_window.focus()
+            self.savedata_window.pack_forget()
+            self.savedata_window = None
+            self.timer.pack()
+            self.buttons.pack()
+            self.resetTimer()
+        # if self.savedata_window is None or not self.savedata_window.winfo_exists():
+        #     self.savedata_window = SaveDataWindow(self, self.buttons.timelist)
+        # else:
+        #     self.savedata_window.focus()
 
     def resetTimer(self):
         self.buttons.resetTimer()
@@ -128,10 +137,10 @@ class buttongrid(ctk.CTkFrame):
 
             self.parent.openSaveDataWindow()
 
-class SaveDataWindow(ctk.CTkToplevel):
+class SaveDataWindow(ctk.CTkFrame):
     def __init__(self, parent, timemanager):
         super().__init__(parent)
-        self.title("Save Data?")
+        # self.title("Save Data?")
         self.timemanager = timemanager
         self.parent = parent
         self.minutes =  ctk.DoubleVar()
@@ -139,6 +148,9 @@ class SaveDataWindow(ctk.CTkToplevel):
 
         self.minutes.set(str(self.timemanager.getDifferenceInMinutes()))
         self.timestamp.set(str(self.timemanager))
+
+        self.close_data = ctk.CTkButton(self, text='x', command=self.closeData)
+        self.close_data.pack()
 
         self.minutes_entry = ctk.CTkEntry(self, textvariable=self.minutes)
         self.minutes_entry.pack()
@@ -150,10 +162,14 @@ class SaveDataWindow(ctk.CTkToplevel):
 
         self.submitinfo = ctk.CTkButton(self, text='submit info', command=self.saveData)
         self.submitinfo.pack()
+        self.pack()
 
     @property
     def choice(self):
         return self.options.choice
+
+    def closeData(self):
+        self.parent.openSaveDataWindow()
 
     def saveData(self):
         #add messagebox confirmation
@@ -162,8 +178,7 @@ class SaveDataWindow(ctk.CTkToplevel):
         project_name = self.choice
         closeWindow = datacontrol.saveToDatabase(project_name, date, seconds)
         if(closeWindow):
-            self.parent.resetTimer()
-            self.destroy()
+            self.parent.openSaveDataWindow()
 
 class TaskChoice(ctk.CTkOptionMenu):
     def __init__(self, parent, tasklist = tasklist()):

@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from tasklist import tasklist
+from gui.components import tasklist
 from tkcalendar import DateEntry
 
 class DataView(ctk.CTk):
