@@ -1,17 +1,13 @@
 #python modules
 import customtkinter as ctk
-from enum import Enum
 #application modules
+from gui.components import timervisual
 from timemanagement.timemanager import timemanager
-from .settings import *
 from .tasklist import tasklist
 from database.datacontrol import datacontrol
+from gui.contants.state_enum import AppStates
+from gui.contants.settings import *
 
-class AppStates(Enum):
-    INACTIVE = 0
-    STARTED = 1
-    PAUSED = 2
-    STOPPED = 3
 
 class CountGUI(ctk.CTk):
     def __init__(self, status = AppStates.INACTIVE):
@@ -19,7 +15,7 @@ class CountGUI(ctk.CTk):
         self.title("Timer")
         #attributes
         self.status = status
-
+        self.first = True
         #widgets
         self.timer = timervisual(self)
         self.buttons = buttongrid(self)
@@ -46,47 +42,6 @@ class CountGUI(ctk.CTk):
         self.buttons.resetTimer()
         self.timer.resetTimerVisual()
         self.appstate = AppStates.INACTIVE
-
-class timervisual(ctk.CTkFrame):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.parent = parent
-        self.first = True
-        #variables
-        self.timenow = 0
-        #tkinter variables
-        self.ticks = ctk.StringVar()
-
-        #widgets
-        self.timelabel =ctk.CTkLabel(self, textvariable=self.ticks, font=TIMER_FONT)
-        self.timelabel.pack()
-
-        #create numeric visual on the first loop
-        if self.first == True:
-            self.first = False
-            self.setTimeString()
-            if self.parent.appstate == AppStates.STARTED:
-                self.after(TICK_RATE, self.updateTimer)
-
-        # self.after(10000, self.updateTimer)
-        self.pack()
-
-    def resetTimerVisual(self):
-        self.timenow = 0
-        self.setTimeString()
-
-    def updateTimer(self):
-        if(self.parent.appstate == AppStates.STARTED):
-            self.timenow = self.timenow + TICK_RATE/1000
-            #print("timenow :", self.timenow)
-            self.after(TICK_RATE, self.updateTimer)
-        self.setTimeString()
-
-    def setTimeString(self):
-        hours = self.timenow // 3600
-        minutes =( self.timenow%3600) //60
-        text = "{0:02}:{1:02}"
-        self.ticks.set(text.format(int(hours),int(minutes)))
 
 class buttongrid(ctk.CTkFrame):
     def __init__(self, parent):
