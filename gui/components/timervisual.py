@@ -1,6 +1,6 @@
 import customtkinter as ctk
-from gui.contants.settings import *
-from gui.contants.state_enum import AppStates
+from gui.constants.settings import *
+from gui.constants.state_enum import AppStates
 
 class timervisual(ctk.CTkFrame):
     def __init__(self, parent):

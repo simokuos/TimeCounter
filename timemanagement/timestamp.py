@@ -30,13 +30,4 @@ class timestamp:
                 if (index < len(stop_times)):
                     temp = stop_times[index].time - time.time
                     delta += temp
-            #print(delta.total_seconds())
         return delta.total_seconds()
-
-
-
-if __name__ == "__main__":
-    timet = timestamp()
-    text = timet._time
-    print(timet)
-    print(text)

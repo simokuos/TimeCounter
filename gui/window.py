@@ -3,8 +3,8 @@ import customtkinter as ctk
 #application modules
 from gui.components import timervisual, tasklist, savedataframe, timerbuttons
 
-from gui.contants.state_enum import AppStates
-from gui.contants.settings import *
+from gui.constants.state_enum import AppStates
+from gui.constants.settings import *
 
 
 class CountGUI(ctk.CTk):
@@ -40,7 +40,6 @@ class CountGUI(ctk.CTk):
             self.timer.pack()
             self.buttons.pack()
             self.resetTimer()
-
 
     def resetTimer(self):
         self.buttons.resetTimer()

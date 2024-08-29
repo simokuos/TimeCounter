@@ -1,6 +1,6 @@
 import customtkinter as ctk
-from gui.contants.state_enum import AppStates
-from gui.contants.settings import *
+from gui.constants.state_enum import AppStates
+from gui.constants.settings import *
 from timemanagement.timemanager import timemanager
 
 class timerbuttons(ctk.CTkFrame):

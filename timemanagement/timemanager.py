@@ -1,5 +1,5 @@
 from .timestamp import timestamp
-# from timestamp import timestamp
+
 class timemanager:
     def __init__(self):
         self.timelist = []
@@ -57,16 +57,3 @@ class timemanager:
         if(self.timelist != []):
             return self.secondsToTimeString(self.getDifferenceInSeconds())
         return "no work done"
-
-if __name__ == "__main__":
-    test = timemanager()
-    test.addTime()
-    test.addTime()
-    test.addTime()
-    test.addTime()
-    time = test.getDifferenceInSeconds()
-    print(test.getTime(0))
-    print(time)
-    print(str(test))
-    test.removeAllTimes()
-    print(str(test))
