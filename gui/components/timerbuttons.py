@@ -30,10 +30,6 @@ class timerbuttons(ctk.CTkFrame):
     def timelist(self):
         return self.timemanager
 
-    def resetTimer(self):
-        # self.timemanager = timemanager()
-        self.segmented_var.set(value="")
-
 
     def button_event_call(self, value):
         match value:

@@ -4,16 +4,16 @@ class Model:
     def __init__(self):
         self.connection = sqlite3.connect('database/database.db')
         self.cursor = self.connection.cursor()
-        self.cursor.execute('CREATE TABLE IF NOT EXISTS workhours (id INTEGER PRIMARY KEY, project_name TEXT, date TEXT, used_seconds TEXT )' )
+        self.cursor.execute('CREATE TABLE IF NOT EXISTS workhours (id INTEGER PRIMARY KEY, name TEXT, date TEXT, used_seconds TEXT )' )
 
     def add_workhours(self, project, seconds):
-        query=("INSERT INTO workhours (project_name, date, used_seconds) "
+        query=("INSERT INTO workhours (name, date, used_seconds) "
               f"VALUES ('{project}', date('now'), '{seconds}' )")
 
         self.cursor.execute(query)
 
     def get_recent_unique_projects(self):
-        query = ("SELECT DISTINCT project_name "
+        query = ("SELECT DISTINCT name "
                  "FROM workhours "
                  "WHERE date > date('now', '-6 months')"
                 )

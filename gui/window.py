@@ -37,14 +37,11 @@ class CountGUI(ctk.CTk):
         else:
             self.savedata_window.pack_forget()
             self.savedata_window = None
-            self.timer.pack()
+            self.timer = timervisual(self).pack()
             self.buttons.pack()
-            self.resetTimer()
+            self.appstate = AppStates.INACTIVE
 
-    def resetTimer(self):
-        self.buttons.resetTimer()
-        self.timer.resetTimerVisual()
-        self.appstate = AppStates.INACTIVE
+
 
 
 if __name__ == "__main__":
