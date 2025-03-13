@@ -29,11 +29,11 @@ class CountGUI(ctk.CTk):
     def appstate(self, status):
         self.status = status
 
-    def toggleSaveData(self):
+    def toggleSaveData(self, value=None):
         if self.savedata_window is None:
             self.timer.pack_forget()
             self.buttons.pack_forget()
-            self.savedata_window = savedataframe(self, self.buttons.timelist)
+            self.savedata_window = savedataframe(self, value)
         else:
             self.savedata_window.pack_forget()
             self.savedata_window = None

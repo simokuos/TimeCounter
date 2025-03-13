@@ -3,16 +3,16 @@ from database.datacontrol import datacontrol
 from gui.components import taskchoice
 
 class savedataframe(ctk.CTkFrame):
-    def __init__(self, parent, timemanager):
+    def __init__(self, parent, used_seconds):
         super().__init__(parent)
         # self.title("Save Data?")
-        self.timemanager = timemanager
+        self.used_seconds = used_seconds
         self.parent = parent
         self.minutes =  ctk.DoubleVar()
         self.timestamp = ctk.StringVar()
 
-        self.minutes.set(str(self.timemanager.getDifferenceInMinutes()))
-        self.timestamp.set(str(self.timemanager))
+        self.minutes.set(str(self.used_seconds //60))
+        self.timestamp.set(str(self.usedTimeToString()))
 
         self.close_data = ctk.CTkButton(self, text='x', command=self.closeData)
         self.close_data.pack()
@@ -29,6 +29,14 @@ class savedataframe(ctk.CTkFrame):
         self.submitinfo.pack()
         self.pack()
 
+    def usedTimeToString(self):
+        if self.used_seconds >= 60:
+            hours   = self.used_seconds // 3600
+            minutes = (self.used_seconds%3600) //60
+            return "{0}h {1}min".format(int(hours), int(minutes))
+        else:
+            return "seconds: {:.2f}".format(self.used_seconds)
+
     @property
     def choice(self):
         return self.options.choice
@@ -38,8 +46,9 @@ class savedataframe(ctk.CTkFrame):
 
     def saveData(self):
         #add messagebox confirmation
-        seconds = self.timemanager.getDifferenceInSeconds()
-        date = self.timemanager.time[0].time
+        seconds = self.used_seconds
+        # date = self.timemanager.time[0].time
+        date = "test"
         project_name = self.choice
         closeWindow = datacontrol.saveToDatabase(project_name, date, seconds)
         if(closeWindow):
