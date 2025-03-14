@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from gui.components import tasklist
-
+print("taskchoice should not be used")
 class taskchoice(ctk.CTkOptionMenu):
     def __init__(self, parent, tasklist = tasklist()):
         super().__init__(parent,

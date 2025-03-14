@@ -17,7 +17,8 @@
 <!-- #app state -->
 <!-- #functionality based on state -->
 <!-- # resetting timer (start_time needs appstate.STOPPED) -->
-
+<!-- changing the timemanager system -->
+# CountGui -> window class, timerbutton -> timerframe (include timervisul here)
 
 4. timer visuals -- DONE
 <!-- #returb total_seconds
@@ -45,10 +46,11 @@
 <!-- # html selector type of widget -->
 #styling
 
-7. task choice functionality --  DONE
+7. task choice functionality
 <!-- #ability to add new options to selector -->
 <!-- #optionmenu.configure(values=["new value 1", "new value 2"]) -->
-
+# redoing the taskchoice to lest coupled implementation
+# new button and frame for adding project or using older continuing older that 6 months
 8. data collection
 <!-- # get method for timemanager, and use countgui self.buttons to get timemager for savedatawindow -->
 <!-- # getting right values out fo timemanager class -->
@@ -59,6 +61,8 @@
 9. data to DATABASE
 <!-- # sqlite import nd setup -->
 <!-- #check for if database and tables exist -> create if not -->
+<!-- # more mvc way of doing database -->
+# swap functionality to use new model
 #tags table and insert function
 
 10. App functionality improvements
@@ -82,3 +86,4 @@
 14. testing
 <!-- #CounterGui starting with AppStates.STARTED -->
 <!-- #tasklist methods -->
+#python import learning

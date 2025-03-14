@@ -25,6 +25,10 @@ class timervisual(ctk.CTkFrame):
         # self.after(10000, self.updateTimer)
         self.pack()
 
+    def reset(self):
+        self.timenow = 0
+        self.updateTimer()
+
     def updateTimer(self):
         if self.parent.status is AppStates.STARTED:
             self.timenow = self.timenow + TICK_RATE/1000

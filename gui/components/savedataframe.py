@@ -1,10 +1,12 @@
 import customtkinter as ctk
 from database.datacontrol import datacontrol
-from gui.components import taskchoice
+from gui.components.workoptions import WorkOptions
+from database.model import Model
 
 class savedataframe(ctk.CTkFrame):
     def __init__(self, parent, used_seconds):
         super().__init__(parent)
+        self.model = Model()
         # self.title("Save Data?")
         self.used_seconds = used_seconds
         self.parent = parent
@@ -23,7 +25,8 @@ class savedataframe(ctk.CTkFrame):
         self.h_min_entry = ctk.CTkEntry(self, textvariable=self.timestamp)
         self.h_min_entry.pack()
 
-        self.options = taskchoice(self)
+        values = self.model.get_recent_unique_projects()
+        self.options =  WorkOptions(self, values, True)
 
         self.submitinfo = ctk.CTkButton(self, text='submit info', command=self.saveData)
         self.submitinfo.pack()
@@ -37,19 +40,12 @@ class savedataframe(ctk.CTkFrame):
         else:
             return "seconds: {:.2f}".format(self.used_seconds)
 
-    @property
-    def choice(self):
-        return self.options.choice
-
     def closeData(self):
         self.parent.toggleSaveData()
 
     def saveData(self):
-        #add messagebox confirmation
-        seconds = self.used_seconds
-        # date = self.timemanager.time[0].time
-        date = "test"
-        project_name = self.choice
-        closeWindow = datacontrol.saveToDatabase(project_name, date, seconds)
-        if(closeWindow):
+        if self.options.hasOption():
+            seconds = self.used_seconds
+            project_name = self.options.get()
+            self.model.add_workhours(project_name, seconds)
             self.parent.toggleSaveData()

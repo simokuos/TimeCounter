@@ -26,11 +26,6 @@ class timerbuttons(ctk.CTkFrame):
 
         self.pack()
 
-    @property
-    def timelist(self):
-        return self.timemanager
-
-
     def button_event_call(self, value):
         match value:
             case 'Start':

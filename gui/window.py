@@ -2,7 +2,7 @@
 import customtkinter as ctk
 #application modules
 from gui.components import timervisual, tasklist, savedataframe, timerbuttons
-
+# from gui.components import workoptions as wos
 from gui.constants.state_enum import AppStates
 from gui.constants.settings import *
 
@@ -16,7 +16,7 @@ class CountGUI(ctk.CTk):
         #widgets
         self.timer = timervisual(self)
         self.buttons = timerbuttons(self)
-
+        # self.test = wos(self,["test","test2"], True )
         self.savedata_window = None
 
         self.mainloop()
@@ -37,11 +37,10 @@ class CountGUI(ctk.CTk):
         else:
             self.savedata_window.pack_forget()
             self.savedata_window = None
-            self.timer = timervisual(self).pack()
+            self.timer.pack()
+            self.timer.reset()
             self.buttons.pack()
             self.appstate = AppStates.INACTIVE
-
-
 
 
 if __name__ == "__main__":
